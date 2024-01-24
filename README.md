@@ -1,6 +1,6 @@
 <h1>Decomus Final Project</h1>
-<h3>Theme : Coffe Shop</h3>
-<h3>Group 5 :</h3>
+<h2>Team 5 (Coffe Shop)</h2>
+<h3>Name :</h3>
 <ol>
   <li>Ikhwanul Husna</li>
   <li>Erina</li>
