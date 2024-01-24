@@ -1,6 +1,4 @@
-#Decomus Final Project
-
-<h1>Team 5 (Coffe Shop)</h1>
+<h1>Decomus Final Project Team 5 (Coffe Shop)</h1>
 <h3>Name :</h3>
 <ol>
   <li>Ikhwanul Husna</li>
