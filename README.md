@@ -2,6 +2,7 @@
 <h3>Team 5 (Coffe Shop)</h3>
 <h3>Mentor : Fausta</h3>
 <h3>Name :</h3>
+<h2>Frontend</h2>
 <ol>
   <li>Ikhwanul Husna</li>
   <li>Erina</li>
