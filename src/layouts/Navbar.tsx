@@ -1,23 +1,71 @@
 import Image from "next/image";
 import logo from "../../public/img/logo_coffe.png";
 import { TbSearch } from "react-icons/tb";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [isActive, setIsActive] = useState(1);
+  useEffect(() => {
+    window.addEventListener("scroll", scrollFunction);
+    return () => {
+      window.removeEventListener("scroll", scrollFunction);
+    };
+  }, []);
+  function scrollFunction() {
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        navbar.style.backgroundColor = "white";
+      } else {
+        navbar.style.backgroundColor = "transparent";
+      }
+    }
+  }
   return (
-    <div className="navbar bg-base-100 px-24 py-3 grid grid-cols-3 bg-transparent">
+    <div
+      className="navbar bg-base-100 px-24 py-3 grid grid-cols-3 bg-transparent fixed top-0 z-50"
+      id="navbar"
+      style={{ backgroundColor: "transparent" }}
+    >
       <div>
-        <Image src={logo} width={100} height={100} alt="logo" />
+        <a href="/">
+          <Image src={logo} width={100} height={100} alt="logo" />
+        </a>
       </div>
       <section>
         <ul className="flex gap-5">
-          <li>
-            <a>About Us</a>
+          <li onClick={() => setIsActive(1)}>
+            <a
+              href="#"
+              className={`${
+                isActive === 1 ? "text-orangeColor" : "text-darkColor"
+              } cursor-pointer hover:text-orangeColor`}
+            >
+              About Us
+            </a>
           </li>
-          <li>
-            <a>Our Product</a>
+          <li onClick={() => setIsActive(2)}>
+            <a
+              href="#product"
+              className={`${
+                isActive === 2 ? "text-orangeColor" : "text-darkColor"
+              } cursor-pointer hover:text-orangeColor`}
+            >
+              Our Product
+            </a>
           </li>
-          <li>
-            <a>Delivery</a>
+          <li onClick={() => setIsActive(3)}>
+            <a
+              href="#delivery"
+              className={`${
+                isActive === 3 ? "text-orangeColor" : "text-darkColor"
+              } cursor-pointer hover:text-orangeColor`}
+            >
+              Delivery
+            </a>
           </li>
         </ul>
       </section>
@@ -26,7 +74,7 @@ const Navbar = () => {
         <input
           type="search"
           placeholder="Type here"
-          className="input input-bordered w-full max-w-xs pl-10"
+          className="input input-bordered input-md w-full max-w-xs pl-10 mr-2"
         />
         <div>
           <div className="dropdown dropdown-end">

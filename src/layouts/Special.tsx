@@ -5,12 +5,14 @@ import special3 from "@/../public/img/special_3.png";
 import special4 from "@/../public/img/special_4.png";
 import special5 from "@/../public/img/special_5.png";
 import special6 from "@/../public/img/special_6.png";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 const Special = () => {
   return (
-    <section className="mx-24">
-      <h1>Special menu for you</h1>
-      <section className="grid grid-cols-3 gap-3">
+    <section className="mx-24 pt-32 relative" id="special">
+      <h1 className="text-2xl font-bold mb-12">Special menu for you</h1>
+      <section className="w-20 h-1 bg-orangeColor absolute top-40 rounded-sm left-40"></section>
+      <section className="grid grid-cols-3 gap-7">
         <CardSpecial
           src={special1}
           name="Sandwich"
@@ -19,33 +21,33 @@ const Special = () => {
         />
         <CardSpecial
           src={special2}
-          name="Sandwich"
+          name="Hot Milk"
           price="12 K"
-          desc="bread with meat and vegetables"
+          desc="Hot Milk with less sugar & cream"
         />
         <CardSpecial
           src={special3}
-          name="Sandwich"
+          name="Coffe Ice Cream"
           price="12 K"
-          desc="bread with meat and vegetables"
+          desc="Coffe with ice cream vanilla"
         />
         <CardSpecial
           src={special4}
-          name="Sandwich"
+          name="Cappucino"
           price="12 K"
-          desc="bread with meat and vegetables"
+          desc="Hot Cappucino"
         />
         <CardSpecial
           src={special5}
-          name="Sandwich"
+          name="Moccacinno"
           price="12 K"
-          desc="bread with meat and vegetables"
+          desc="Hot Moccacino "
         />
         <CardSpecial
           src={special6}
-          name="Sandwich"
+          name="Waffle Ice Crem"
           price="12 K"
-          desc="bread with meat and vegetables"
+          desc="Wafle with Ice cream"
         />
       </section>
     </section>
@@ -63,15 +65,17 @@ type CardSpecialProps = {
 
 export const CardSpecial = ({ src, name, price, desc }: CardSpecialProps) => {
   return (
-    <section>
-      <Image src={src} alt="coffe" />
-      <section>
-        <h3>{name}</h3>
+    <section className="bg-white py-6 px-5 rounded-lg border z-20 shadow-md">
+      <Image src={src} alt="coffe" className="rounded-lg" />
+      <section className="flex items-center justify-between text-xl mt-4 font-bold mx-3">
+        <h3 className="font-bold">{name}</h3>
         <h3>{price}</h3>
       </section>
-      <section>
-        <p>{desc}</p>
-        <button>Order Now</button>
+      <section className="flex justify-between items-center mt-3 mx-3">
+        <p className="w-4/6">{desc}</p>
+        <button>
+          <MdOutlineShoppingCart className="bg-orangeColor rounded-full text-white border-2 border-orangeColor scale-150 mr-3" />
+        </button>
       </section>
     </section>
   );

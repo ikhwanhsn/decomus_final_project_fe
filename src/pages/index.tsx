@@ -19,7 +19,7 @@ export default function Home() {
       <Special />
       <Testimony />
       <Subscribe />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

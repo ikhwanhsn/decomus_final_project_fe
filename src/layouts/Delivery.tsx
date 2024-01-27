@@ -5,9 +5,9 @@ import delivery3 from "@/../public/img/delivery_3.png";
 
 const Delivery = () => {
   return (
-    <section className="mx-24">
-      <h1>How to use delivery service</h1>
-      <section className="flex justify-between">
+    <section className="mx-24 mb-24 pt-36 text-darkColor" id="delivery">
+      <h1 className="text-2xl font-bold">How to use delivery service</h1>
+      <section className="flex justify-between mt-16 mx-24">
         <CardDelivery
           src={delivery1}
           title="choose your coffee"
@@ -42,10 +42,10 @@ export const CardDelivery = ({
   description,
 }: CardDeliveryProps) => {
   return (
-    <section>
+    <section className="flex flex-col justify-center items-center">
       <Image src={src} alt={"icon"} />
-      <h4>{title}</h4>
-      <p>{description}</p>
+      <h4 className="font-bold text-xl mt-4">{title}</h4>
+      <p className="mt-3">{description}</p>
     </section>
   );
 };
