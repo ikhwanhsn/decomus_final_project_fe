@@ -60,10 +60,13 @@ export const CardPopular = ({ src, name, price }: CardPopularProps) => {
   const [selctedMenu, setSelctedMenu] = useState("");
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // const orderId = randomBytes(4).toString("hex");
-    const pemesan = document.getElementById("nama").value || "Anonim";
-    const dipesan = document.getElementById("pesanan").value || "Anonim";
-    const harga = document.getElementById("harga").value || "Anonim";
+    const pemesan =
+      (document.getElementById("nama") as HTMLInputElement)?.value || "Anonim";
+    const dipesan =
+      (document.getElementById("pesanan") as HTMLSelectElement)?.value ||
+      "Anonim";
+    const harga =
+      (document.getElementById("harga") as HTMLInputElement)?.value || "Anonim";
     try {
       await axios
         .put("https://harsh-ball-production.up.railway.app/api/pemesans/0", {
@@ -73,7 +76,6 @@ export const CardPopular = ({ src, name, price }: CardPopularProps) => {
           tanggalpesan: new Date(),
         })
         .then((res) => {
-          console.log(res.data);
           localStorage.setItem("namaPemesan", res.data.pemesan);
           return "success";
         })
@@ -120,11 +122,26 @@ export const CardPopular = ({ src, name, price }: CardPopularProps) => {
         <button
           className=""
           onClick={() => {
-            document.getElementById("my_modal_1")?.showModal();
+            (
+              document.getElementById("my_modal_1") as HTMLDialogElement
+            )?.showModal();
             setSelctedMenu(name);
-            document.getElementById("pesanan").value = name;
-            document.getElementById("harga").value =
-              price.split(" ")[0] + "000";
+            const pesananElement = window.document.getElementById(
+              "pesanan"
+            ) as HTMLInputElement;
+            if (pesananElement) {
+              pesananElement.value = name;
+            } else {
+              console.error("Element dengan ID 'pesanan' tidak ditemukan.");
+            }
+            const hargaElement = window.document.getElementById(
+              "harga"
+            ) as HTMLInputElement;
+            if (hargaElement) {
+              hargaElement.value = price.split(" ")[0] + "000";
+            } else {
+              console.error("Element dengan ID 'harga' tidak ditemukan.");
+            }
           }}
         >
           <MdOutlineShoppingCart className="bg-orangeColor rounded-full text-white border-2 border-orangeColor scale-150 mr-3 hover:bg-orange-500 hover:border-orange-500" />

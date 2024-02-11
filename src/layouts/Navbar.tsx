@@ -71,23 +71,53 @@ const Navbar = () => {
   }
 
   const handleEdit = async (id: any) => {
-    const data = await dataPesanan.filter((item: any) => item.id === id);
-    document.getElementById("my_modal_3")?.remove();
-    document.getElementById("my_modal_10")?.showModal();
+    const data: any = await dataPesanan.filter((item: any) => item.id === id);
+    window.document.getElementById("my_modal_3")?.remove();
+    (
+      window.document.getElementById("my_modal_10") as HTMLDialogElement
+    )?.showModal();
     if (data) {
-      document.getElementById("idHidden").value = id;
-      document.getElementById("namaEdit").value = data[0].pemesan;
-      document.getElementById("pesananEdit").value = data[0].dipesan;
-      document.getElementById("hargaEdit").value = data[0].harga;
+      const idHidden = window.document.getElementById(
+        "idHidden"
+      ) as HTMLInputElement;
+      const namaEdit = window.document.getElementById(
+        "namaEdit"
+      ) as HTMLInputElement;
+      const pesananEdit = window.document.getElementById(
+        "pesananEdit"
+      ) as HTMLSelectElement;
+      const hargaEdit = window.document.getElementById(
+        "hargaEdit"
+      ) as HTMLInputElement;
+      if (idHidden) {
+        idHidden.value = id;
+      }
+      if (namaEdit) {
+        namaEdit.value = data[0].pemesan;
+      }
+      if (pesananEdit) {
+        pesananEdit.value = data[0].dipesan;
+      }
+      if (hargaEdit) {
+        hargaEdit.value = data[0].harga;
+      }
     }
   };
 
   const submitEdit = async (e: any) => {
     e.preventDefault();
-    const id = document.getElementById("idHidden").value || "Anonim";
-    const pemesan = document.getElementById("namaEdit").value || "Anonim";
-    const dipesan = document.getElementById("pesananEdit").value || "Anonim";
-    const harga = document.getElementById("hargaEdit").value || "Anonim";
+    const id =
+      (document.getElementById("idHidden") as HTMLInputElement)?.value ||
+      "Anonim";
+    const pemesan =
+      (document.getElementById("namaEdit") as HTMLInputElement)?.value ||
+      "Anonim";
+    const dipesan =
+      (document.getElementById("pesananEdit") as HTMLSelectElement)?.value ||
+      "Anonim";
+    const harga =
+      (document.getElementById("hargaEdit") as HTMLInputElement)?.value ||
+      "Anonim";
     try {
       await axios
         .put(
@@ -203,7 +233,11 @@ const Navbar = () => {
         <div>
           <button
             className="relative hover:bg-gray-200 p-3 rounded-full ml-4 transition-all hover:shadow-sm"
-            onClick={() => document.getElementById("my_modal_3")?.showModal()}
+            onClick={() =>
+              (
+                document.getElementById("my_modal_3") as HTMLDialogElement
+              )?.showModal()
+            }
           >
             <MdOutlineShoppingCart className="scale-125" />
           </button>

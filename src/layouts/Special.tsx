@@ -73,9 +73,15 @@ export const CardSpecial = ({ src, name, price, desc }: CardSpecialProps) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     // const orderId = randomBytes(4).toString("hex");
-    const pemesan = document.getElementById("namaSpecial").value || "Anonim";
-    const dipesan = document.getElementById("pesananSpecial").value || "Anonim";
-    const harga = document.getElementById("hargaSpecial").value || "Anonim";
+    const pemesan =
+      (document.getElementById("namaSpecial") as HTMLInputElement).value ||
+      "Anonim";
+    const dipesan =
+      (document.getElementById("pesananSpecial") as HTMLSelectElement).value ||
+      "Anonim";
+    const harga =
+      (document.getElementById("hargaSpecial") as HTMLInputElement).value ||
+      "Anonim";
     try {
       await axios
         .put("https://harsh-ball-production.up.railway.app/api/pemesans/0", {
@@ -124,11 +130,22 @@ export const CardSpecial = ({ src, name, price, desc }: CardSpecialProps) => {
         <p className="w-4/6">{desc}</p>
         <button
           onClick={() => {
-            document.getElementById("my_modal_13")?.showModal();
+            (
+              document.getElementById("my_modal_13") as HTMLDialogElement
+            )?.showModal();
             setSelctedMenu(name);
-            document.getElementById("pesananSpecial").value = name;
-            document.getElementById("hargaSpecial").value =
-              price.split(" ")[0] + "000";
+            const pesananSpecial = document.getElementById(
+              "pesananSpecial"
+            ) as HTMLSelectElement;
+            const hargaSpecial = document.getElementById(
+              "hargaSpecial"
+            ) as HTMLInputElement;
+            if (pesananSpecial) {
+              pesananSpecial.value = name;
+            }
+            if (hargaSpecial) {
+              hargaSpecial.value = price.split(" ")[0] + "000";
+            }
           }}
         >
           <MdOutlineShoppingCart className="bg-orangeColor rounded-full text-white border-2 border-orangeColor scale-150 mr-3" />
