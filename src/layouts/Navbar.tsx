@@ -42,7 +42,7 @@ const Navbar = () => {
   }, []);
   async function getPesanan(id: any) {
     const res = await fetch(
-      "https://harsh-ball-production.up.railway.app/api/pemesans"
+      "https://cors-anywhere.herokuapp.com/https://harsh-ball-production.up.railway.app/api/pemesans"
     )
       .then((res) => res.json())
       .then((data) => {
@@ -121,7 +121,7 @@ const Navbar = () => {
     try {
       await axios
         .put(
-          `https://harsh-ball-production.up.railway.app/api/pemesans/${id}`,
+          `https://cors-anywhere.herokuapp.com/https://harsh-ball-production.up.railway.app/api/pemesans/${id}`,
           {
             pemesan: pemesan,
             dipesan: dipesan,
@@ -155,7 +155,7 @@ const Navbar = () => {
     try {
       await axios
         .delete(
-          `https://harsh-ball-production.up.railway.app/api/pemesans/${id}`
+          `https://cors-anywhere.herokuapp.com/https://harsh-ball-production.up.railway.app/api/pemesans/${id}`
         )
         .then(async (res) => {
           document.getElementById("my_modal_3")?.remove();

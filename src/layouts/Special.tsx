@@ -84,12 +84,15 @@ export const CardSpecial = ({ src, name, price, desc }: CardSpecialProps) => {
       "Anonim";
     try {
       await axios
-        .put("https://harsh-ball-production.up.railway.app/api/pemesans/0", {
-          pemesan: pemesan,
-          dipesan: dipesan,
-          harga: harga,
-          tanggalpesan: new Date(),
-        })
+        .put(
+          "https://cors-anywhere.herokuapp.com/https://harsh-ball-production.up.railway.app/api/pemesans/0",
+          {
+            pemesan: pemesan,
+            dipesan: dipesan,
+            harga: harga,
+            tanggalpesan: new Date(),
+          }
+        )
         .then((res) => {
           localStorage.setItem("namaPemesan", res.data.pemesan);
           return "success";
@@ -115,13 +118,7 @@ export const CardSpecial = ({ src, name, price, desc }: CardSpecialProps) => {
 
   return (
     <section className="bg-white py-6 px-5 rounded-lg border z-20 shadow-md">
-      <Image
-        src={src}
-        alt="coffe"
-        className="rounded-lg"
-        // width={200}
-        // height={200}
-      />
+      <Image src={src} alt="coffe" className="rounded-lg" />
       <section className="flex items-center justify-between text-xl mt-4 font-bold mx-3">
         <h3 className="font-bold">{name}</h3>
         <h3>{price}</h3>

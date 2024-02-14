@@ -69,12 +69,15 @@ export const CardPopular = ({ src, name, price }: CardPopularProps) => {
       (document.getElementById("harga") as HTMLInputElement)?.value || "Anonim";
     try {
       await axios
-        .put("https://harsh-ball-production.up.railway.app/api/pemesans/0", {
-          pemesan: pemesan,
-          dipesan: dipesan,
-          harga: harga,
-          tanggalpesan: new Date(),
-        })
+        .put(
+          "https://cors-anywhere.herokuapp.com/https://harsh-ball-production.up.railway.app/api/pemesans/0",
+          {
+            pemesan: pemesan,
+            dipesan: dipesan,
+            harga: harga,
+            tanggalpesan: new Date(),
+          }
+        )
         .then((res) => {
           localStorage.setItem("namaPemesan", res.data.pemesan);
           return "success";
@@ -165,14 +168,6 @@ export const CardPopular = ({ src, name, price }: CardPopularProps) => {
                 Pesanan :
               </label>
               <br />
-              {/* <input
-                type="text"
-                name="pesanan"
-                id="pesanan"
-                value={name}
-                readOnly
-                className="input input-bordered my-2 w-full"
-              /> */}
               <select
                 name="pesanan"
                 id="pesanan"
